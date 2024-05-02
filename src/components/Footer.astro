@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import IconoMail from "../assets/mail.svg";
+import IconoInstagram from "../assets/instagram.svg";
+import IconoWhatsapp from "../assets/whatsapp.svg";
+import ImagenFooter from "../assets/footer.png";
+---
+
+<footer>
+    <Image src={ImagenFooter} alt="El pie del footer" />
+        <div class="container-footer">
+            <div class="container-footer-txt">
+                <p>© 2024 Lima Limon</p>
+            </div>
+            <div class="container-footer-img">
+                <Image src={IconoMail} alt="IconoMail" />
+                <Image src={IconoInstagram} alt="IconoInstagram" />
+                <Image src={IconoWhatsapp} alt="IconoWhatsapp" />
+            </div>
+        </div>
+
+    <style>
+        footer {
+            width: 100%;
+            height: 12rem;
+            display: grid;
+            z-index: 1;
+
+            & img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        .container-footer {
+            width: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            & img {
+                width: 50px;
+            }
+
+            & .container-footer-txt,
+            .container-footer-img {
+                margin: 0 100px;
+            }
+
+            & .container-footer-img {
+                display: flex;
+                width: 250px;
+                justify-content: space-evenly;
+            }
+        }
+    </style>
+</footer>

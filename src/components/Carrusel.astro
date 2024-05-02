@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import ImageSlider1 from "../assets/slider-1.png";
+import ImageSlider2 from "../assets/slider-2.png";
+import ImageSlider3 from "../assets/slider-3.png";
+---
+
+<div id="slide">
+    <div id="slider">
+        <Image src={ImageSlider1} alt="Imagen 1" />
+        <Image src={ImageSlider2} alt="Imagen 2" />
+        <Image src={ImageSlider3} alt="Imagen 3" />
+    </div>
+</div>
+
+<script>
+    const slider = document.getElementById("slider");
+    const slides = slider.getElementsByTagName("img");
+    const slideCount = slides.length;
+    let slideWidth = 0;
+
+    // Esperar a que todas las imágenes se carguen antes de calcular la anchura del slider
+    window.addEventListener("load", () => {
+        slideWidth = slides[0].clientWidth;
+        updateSlider();
+    });
+
+    // Variables para controlar el slider
+    let slideIndex = 0;
+
+    // Función para pasar al siguiente slide
+    function nextSlide() {
+        slideIndex = (slideIndex + 1) % slideCount;
+        updateSlider();
+    }
+
+    // Función para actualizar la posición del slider
+    function updateSlider() {
+        const offset = -slideIndex * slideWidth;
+        slider.style.transform = `translateX(${offset}px)`;
+    }
+
+    // Intervalo para cambiar automáticamente de slide
+    setInterval(nextSlide, 3000);
+</script>
+
+<style>
+    #card-galeria {
+        width: 620px;
+    }
+
+    .text-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 20px;
+        color: black;
+    }
+
+    .text-card a {
+        color: black;
+        font-weight: 700;
+    }
+
+    #slide {
+        overflow: hidden;
+        width: 100%;
+        height: 430px;
+        position: relative;
+    }
+
+    #slider {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+
+    #slider img {
+        width: 100%;
+        height: 430px;
+    }
+</style>

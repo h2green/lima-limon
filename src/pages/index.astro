@@ -1,11 +1,55 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CardNoticia from "../components/CardNoticia.astro";
+import CarruselImg from "../components/Carrusel.astro";
 ---
 
 <Layout title="Lima limon - Home">
-</Layout>
-	
+    <Header />
+    <main>
+        <section id="card-galeria">
+            <div class="text-card">
+                <h3>Galería</h3>
+            </div>
+            <CarruselImg />
+        </section>
+        <section id="card-noticia">
+            <CardNoticia />
+        </section>
+    </main>
+    <Footer />
 </Layout>
 
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+    }
 
+    #card-galeria {
+        width: 620px;
+    }
+
+    .text-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 20px;
+        color: black;
+    }
+
+    .text-card a {
+        color: black;
+        font-weight: 700;
+    }
+
+    #card-noticia {
+        width: 620px;
+        height: 330px;
+    }
+</style>
