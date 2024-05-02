@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Lima limon - Evento">
+    <Header />
+    <main>
+        <h1>Evento</h1>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px 0;
+        height: 26rem;
+    }
+</style>

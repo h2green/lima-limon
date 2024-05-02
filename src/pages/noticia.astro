@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import CardNoticia from "../components/CardNoticia.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Lima limon - Noticia">
+    <Header />
+    <main>
+        <h1>Noticia</h1>
+        <CardNoticia />
+        <CardNoticia />
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        margin: 15px 0;
+    }
+</style>
