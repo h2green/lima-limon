@@ -7,20 +7,27 @@ import Footer from "../components/Footer.astro";
 
 <Layout title="Lima limon - Noticia">
     <Header />
-    <main>
-        <h1>Noticia</h1>
-        <CardNoticia />
-        <CardNoticia />
-    </main>
+    <div class="container-noticia">
+        <main>
+            <h1>Noticia</h1>
+            <CardNoticia />
+        </main>
+    </div>
     <Footer />
 </Layout>
 
 <style>
-    main {
+    .container-noticia {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    main {
+        max-width: 620px;
+        display: grid;
+        justify-items: center;
     }
 
     h1 {

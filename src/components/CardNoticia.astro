@@ -1,38 +1,21 @@
 ---
-import { Image } from 'astro:assets';
-import ImgNoticia1 from '../assets/not1.png';
+import { Image } from "astro:assets";
+import ImgNoticia1 from "../assets/not1.png";
 ---
 
-<div class="text-card">
-    <h3>Noticia</h3>
-    <a href="pages/noticia.html">Ver más</a>
-</div>
 <div id="contenido">
-    <Image src={ImgNoticia1} alt='Imagen de la primera noticia'/>
+    <Image src={ImgNoticia1} alt="Imagen de la primera noticia" />
     <p>
         La primera noticias de muchas, ya esta la página oficial de Lima limon
     </p>
 </div>
 
 <style>
-    .text-card {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 20px;
-        color: black;
-        margin: 15px 0;
-    }
-
-    .text-card a {
-        color: black;
-        font-weight: 700;
-    }
-
     #contenido {
         background-color: #a04cbe;
         border-radius: 18px;
         box-shadow: 2px 4px 8px #00000099;
+        margin: 15px 0;
         display: flex;
         align-items: center;
     }

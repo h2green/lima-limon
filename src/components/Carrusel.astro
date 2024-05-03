@@ -5,7 +5,7 @@ import ImageSlider2 from "../assets/slider-2.png";
 import ImageSlider3 from "../assets/slider-3.png";
 ---
 
-<div id="slide">
+<div id="container-slaider">
     <div id="slider">
         <Image src={ImageSlider1} alt="Imagen 1" />
         <Image src={ImageSlider2} alt="Imagen 2" />
@@ -62,10 +62,11 @@ import ImageSlider3 from "../assets/slider-3.png";
         font-weight: 700;
     }
 
-    #slide {
+    #container-slaider {
         overflow: hidden;
         width: 100%;
         height: 430px;
+        margin: 15px 0;
         position: relative;
     }
 
