@@ -23,6 +23,31 @@ import Header from "../components/Header.astro";
         <h3>Horario de atención:</h3>
         <p>Lunes a Viernes de 09:00 a 12:00 y de 14:00 a 20:00</p>
         <p>Sábados y domingo de 09:00 a 12:00</p>
+
+        <form id="contacto" method="post">
+            <h2>Contacto</h2>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required />
+          
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required />
+          
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" required />
+          
+            <label for="fechaEvento">Fecha del evento</label>
+            <input type="date" id="fechaEvento" name="fechaEvento" required />
+          
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+          
+            <div class="container-btn">
+              <input type="submit" value="Enviar" class="btn">
+            </div>
+          </form>
     </main>
 </Layout>
 
@@ -53,6 +78,59 @@ import Header from "../components/Header.astro";
         & h3,
         p {
             margin: 5px 0;
+        }
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        background: #a04cbe;
+        border-radius: 10px;
+        padding: 20px;
+        width: 300px;
+        box-shadow: 2px 2px 8px #00000094;
+
+        & h2 {
+            font-size: 32px;
+            text-align: center;
+            color: #000;
+        }
+
+        & label {
+            font-size: 20px;
+        }
+
+        & input {
+            display: block;
+            border-radius: 5px;
+            border: none;
+            padding: 5px 10px;
+            margin: 10px 0;
+        }
+
+        & textarea {
+            min-height: 100px;
+            resize: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .container-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        & .btn {
+            font-size: 18px;
+            padding: 15px 40px;
+            border-radius: 18px;
+            transition: 0.6s;
+            cursor: pointer;
+
+            &:hover {
+                background: #000;
+                color: #fff;
+            }
         }
     }
 </style>
