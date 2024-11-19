@@ -7,12 +7,9 @@ import Header from "../components/Header.astro";
     <Header />
     <main>
         <h1>Estamos en</h1>
-        <a
-            href="https://www.google.com/maps/place/Lima+Lim%C3%B3n/@-34.7134193,-58.3887071,55m/data=!3m1!1e3!4m6!3m5!1s0x95bccd3bf9c576e3:0x879074c03377e266!8m2!3d-34.7134673!4d-58.3885997!16s%2Fg%2F11ddwwzd61?entry=ttu"
-            >Salta & Ramón Cabrera, Provincia de Buenos Aires</a
-        >
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240.81584459570178!2d-58.38870708175164!3d-34.713419252422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccd3bf9c576e3%3A0x879074c03377e266!2sLima%20Lim%C3%B3n!5e1!3m2!1ses-419!2sar!4v1712160232974!5m2!1ses-419!2sar"
+        <a href="https://www.google.com/maps/place/Lima+Lim%C3%B3n/@-34.7134193,-58.3887071,55m/data=!3m1!1e3!4m6!3m5!1s0x95bccd3bf9c576e3:0x879074c03377e266!8m2!3d-34.7134673!4d-58.3885997!16s%2Fg%2[...]
+            >Salta & Ramón Cabrera, Provincia de Buenos Aires</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240.81584459570178!2d-58.38870708175164!3d-34.713419252422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccd3bf9c576e3%3[...]
             width="600"
             height="450"
             style="border:0;"
@@ -24,7 +21,7 @@ import Header from "../components/Header.astro";
         <p>Lunes a Viernes de 09:00 a 12:00 y de 14:00 a 20:00</p>
         <p>Sábados y domingo de 09:00 a 12:00</p>
 
-        <form id="contacto" method="post">
+        <form id="contacto" method="post" onsubmit="return validateForm(event)">
             <h2>Contacto</h2>
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" required />
@@ -47,6 +44,7 @@ import Header from "../components/Header.astro";
             <div class="container-btn">
               <input type="submit" value="Enviar" class="btn">
             </div>
+            <div id="validationErrors" style="color: red;"></div>
           </form>
     </main>
 </Layout>
@@ -134,3 +132,60 @@ import Header from "../components/Header.astro";
         }
     }
 </style>
+
+<script>
+function validateForm(event) {
+    event.preventDefault();
+    let errors = [];
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const fechaEvento = document.getElementById('fechaEvento').value;
+    const mensaje = document.getElementById('mensaje').value.trim();
+    const errorDiv = document.getElementById('validationErrors');
+
+    errorDiv.innerHTML = '';
+
+    // Validate nombre
+    if (!nombre || /\d/.test(nombre)) {
+        errors.push('Nombre no puede estar vacío ni contener números.');
+    }
+
+    // Validate apellido
+    if (!apellido || /\d/.test(apellido)) {
+        errors.push('Apellido no puede estar vacío ni contener números.');
+    }
+
+    // Validate email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        errors.push('El formato del e-mail es incorrecto.');
+    }
+
+    // Validate telefono
+    const telefonoPattern = /^\d{8,15}$/;
+    if (!telefonoPattern.test(telefono)) {
+        errors.push('El teléfono debe contener solo números y tener entre 8 y 15 dígitos.');
+    }
+
+    // Validate fechaEvento
+    const today = new Date().toISOString().split('T')[0];
+    if (!fechaEvento || fechaEvento < today) {
+        errors.push('La fecha del evento no puede ser anterior a la actual.');
+    }
+
+    // Validate mensaje
+    if (mensaje.length < 10 || mensaje.length > 250) {
+        errors.push('El comentario debe tener entre 10 y 250 caracteres.');
+    }
+
+    // Display errors or submit form
+    if (errors.length > 0) {
+        errorDiv.innerHTML = errors.join('<br/>');
+    } else {
+        errorDiv.innerHTML = 'Datos válidos. Enviando formulario...';
+    document.getElementById('contacto').submit();
+    }
+}
+</script>
